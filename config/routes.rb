@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :time_logs
+
+  resources :categories
+
+  resources :users
+
+  resources :tags
+
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
