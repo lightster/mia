@@ -10,8 +10,24 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require welcome
  *= require_self
- *= require foundation_and_overrides
-
  */
+
+@import 'foundation_and_overrides';
+
+.content-container {
+  @include grid-row();
+  .content {
+    @include grid-column(12);
+  }
+}
+
+.row.display {
+  background: #eee;
+  border: solid 1px #c6c6c6;
+  .columns {
+    border: solid 1px #aaa;
+    background: #e1e1e1;
+  }
+}

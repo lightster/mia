@@ -10,8 +10,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-  <%= yield %>
-
+  <div class="fixed">
+    <nav class="top-bar" data-topbar data-options="sticky_on: large">
+      <ul class="title-area">
+        <li class="name">
+        <h1><a href="#">Mia</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="content-container">
+    <div class="content">
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>
