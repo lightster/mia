@@ -1,0 +1,26 @@
+Description:
+    This will generate a :has_many :through relation for the models you
+    name as parameters for the generator.
+
+Example:
+    rails generate scaffold_hmt Assembly Part
+
+    This will create:
+        app/models/assemblies_part.rb
+        db/migrate/<timestamp>_create_assemblies_parts.rb
+
+    this will add to:
+        app/models/assembly.rb
+        app/models/part.rb
+
+    Optionally, you may use as additional parameter the join model name:
+    rails generate scaffold_hmt Assemby Part AssPart
+
+    This will create:
+        app/models/ass_part.rb
+        db/migrate/<timestamp>_create_ass_parts.rb
+
+    this will add to:
+        app/models/assembly.rb
+        app/models/part.rb
+
