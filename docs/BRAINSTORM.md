@@ -30,3 +30,69 @@ Should we track the actual times?
   - No, your focus is on the wrong thing, don't waste time
   
 How could we make goals or something for specific categories like "development"?  This way we would encourage ourselves to develop more.
+
+# Future?
+
+ - Archive categories using archive tables
+
+# Database Structure
+
+### times
+
+ - id
+ - user_id
+ - category_id
+ - description
+ - date
+ - rounded_minutes
+ - actual_seconds
+ - timer_enabled
+ - created_at
+ - updated_at
+
+unique on (user_id, timer_enabled)
+constraint on (timer_enabled = true or timer_enabled is null)
+
+### categories
+
+ - id
+ - user_id
+ - title
+ - time_increment
+ - created_at
+ - updated_at
+
+### tags
+
+ - id
+ - title 
+
+unique on (title)
+
+### times_tags
+
+ - id
+ - time_id
+ - tag_id
+ - created_at
+
+unique on (time_id, tag_id)
+
+### users
+
+ - id
+ - email
+ - password
+ - name
+ - created_at
+ - updated_at
+
+unique on (email)
+
+# Rails Scaffolding
+
+    rails generate scaffold Tag title:string
+    rails generate scaffold User email:string:uniq password:string name:string
+    rails generate scaffold Category user:belongs_to title:string time_increment:integer
+    rails generate scaffold TimeLog user:belongs_to category:belongs_to description:string date:date rounded_minutes:integer actual_seconds:integer timer_enabled:boolean
+    rails generate scaffold TimeLogTag time_log:belongs_to tag:belongs_to
