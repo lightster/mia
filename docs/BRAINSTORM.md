@@ -103,18 +103,16 @@ unique on (email)
 
 Need to be able to
 
- - Create new time logs
+ - Create new time logs (`POST /api/v1/user/:user/time_logs`)
      - Include associating the time logs to tags
- - Update time logs
- - List time logs
-    - For a date range
-    - For a category
-    - For specific tags
-    - Retrieve current "timer" timelog
- - List user tags (that is, tags a user has used)
- - Create tags (? this may be unnecessary since time logs can implicitly create tags)
- - Create categories
- - Update categories
-
- - /api/v1.0
-     - ...
+ - Update time logs (`PUT /api/v1/user/:user/time_logs/:id`)
+ - List time logs (`GET /api/v1/user/:user/time_logs/`)
+    - Filtered by time log ID (`{id: ID}`)
+    - Retrieve current "timer" timelog (`{timer: true}`)
+    - Filtered by date range (`{after_date: AFTER_DATE, before_date: BEFORE_DATE}`)
+    - Filtered by category (`{categories: [CATEGORY_ID_1, CATEGORY_ID_2, ...]}`)
+    - Filtered by tag (`{tags: [TAG_ID_1, TAG_ID_2, ...]}`)
+ - List user tags—that is, tags a user has used (`GET /api/v1/user/:user/tags`)
+ - List categories (`GET /api/v1/user/:user/categories`)
+ - Create categories (`POST /api/v1/user/:user/categories`)
+ - Update categories (`PUT /api/v1/user/:user/categories/:id`)
