@@ -34,6 +34,8 @@ How could we make goals or something for specific categories like "development"?
 # Future?
 
  - Archive categories using archive tables
+ - Ping user when timer has been enabled for a long while
+ - Pause timer without stopping it
 
 # Database Structure
 
@@ -96,3 +98,23 @@ unique on (email)
     rails generate scaffold Category user:belongs_to title:string time_increment:integer
     rails generate scaffold TimeLog user:belongs_to category:belongs_to description:string date:date rounded_minutes:integer actual_seconds:integer timer_enabled:boolean
     rails generate scaffold TimeLogTag time_log:belongs_to tag:belongs_to
+
+# API
+
+Need to be able to
+
+ - Create new time logs
+     - Include associating the time logs to tags
+ - Update time logs
+ - List time logs
+    - For a date range
+    - For a category
+    - For specific tags
+    - Retrieve current "timer" timelog
+ - List user tags (that is, tags a user has used)
+ - Create tags (? this may be unnecessary since time logs can implicitly create tags)
+ - Create categories
+ - Update categories
+
+ - /api/v1.0
+     - ...
