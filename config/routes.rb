@@ -14,11 +14,7 @@ Rails.application.routes.draw do
 
   namespace :api, :defaults => {:format => :json} do
     namespace :v1 do
-      # If we were using usernames:
-      # resources :users, param: :username do
-      resources :users do
-        resources :tags, only: [:index]
-      end
+      resources :tags, only: [:index]
     end
   end
 
