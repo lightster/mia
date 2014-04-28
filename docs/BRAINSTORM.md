@@ -106,6 +106,7 @@ Need to be able to
  - Create new time logs (`POST /api/v1/time_logs`)
      - Include associating the time logs to tags
  - Update time logs (`PUT /api/v1/time_logs/:id`)
+ - Delete time logs (`DELETE /api/v1/time_logs/:id`)
  - List time logs (`GET /api/v1/time_logs/`)
     - Filtered by time log ID (`{id: ID}`)
     - Retrieve current "timer" timelog (`{timer: true}`)
@@ -116,3 +117,4 @@ Need to be able to
  - List categories (`GET /api/v1/categories`)
  - Create categories (`POST /api/v1/categories`)
  - Update categories (`PUT /api/v1/categories/:id`)
+ - Delete categories (`DELETE /api/v1/categories/:id`)
