@@ -1,6 +1,7 @@
 class Api::V1::CategoriesController < ApplicationController
   # GET /api/v1/categories
   def index
+    @categories = Category.all.user(get_current_user.id)
   end
 
   # POST /api/v1/categories
