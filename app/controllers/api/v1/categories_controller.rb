@@ -13,6 +13,6 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   # DELETE /api/v1/categories/:id
-  def delete
+  def destroy
   end
 end
