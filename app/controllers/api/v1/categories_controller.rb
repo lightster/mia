@@ -8,6 +8,13 @@ class Api::V1::CategoriesController < ApplicationController
 
   # POST /api/v1/categories
   def create
+    @category = Category.new(params.permit(:title, :time_increment, :user_id))
+
+    if @category.save
+      render json: @category, status: :created
+    else
+      render json: @category.errors, status: :unprocessable_entity
+    end
   end
 
   # PUT /api/v1/categories/:id
