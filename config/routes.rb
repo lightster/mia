@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :tags, only: [:index]
       resources :categories, only: [:index, :create, :update, :destroy]
+      resources :time_logs, only: [:index, :create, :update, :destroy]
     end
   end
 
