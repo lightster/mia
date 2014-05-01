@@ -10,7 +10,6 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require welcome
  *= require_self
  */
 
@@ -29,5 +28,37 @@
   .columns {
     border: solid 1px #aaa;
     background: #e1e1e1;
+  }
+}
+
+.timer {
+  .overview {
+    text-align: center;
+    padding: 20px 10px;
+    .overview-status {
+    }
+    .overview-counter {
+      @extend h1
+    }
+    .overview-category {
+    }
+  }
+
+  .categories {
+    @include grid-column(12);
+    .category {
+      .category-actions {
+        padding: 5px 0;
+      }
+      .category-name {
+        padding: 5px 0;
+      }
+      .category-description {
+      }
+      .category-tags {
+      }
+    }
+    .category.enabled {
+    }
   }
 }
