@@ -19,8 +19,11 @@ class Api::V1::CategoriesController < ApplicationController
 
   # PUT /api/v1/categories/:id
   def update
-    @category.update(params.permit(:title, :time_increment))
-    @category
+    if @category.update(params.permit(:title, :time_increment))
+      render json: @category, status: :ok
+    else
+      render json: @category.errors, status: :unprocessable_entity
+    end
   end
 
   # DELETE /api/v1/categories/:id
