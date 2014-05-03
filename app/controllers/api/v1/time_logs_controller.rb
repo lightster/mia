@@ -1,4 +1,6 @@
 class Api::V1::TimeLogsController < ApplicationController
+  before_action :set_time_log, only: [:update]
+
   def index
     @time_logs = TimeLog.all.user(get_current_user.id)
   end
@@ -14,8 +16,19 @@ class Api::V1::TimeLogsController < ApplicationController
   end
 
   def update
+    if @time_log.update(params.permit(:category_id, :description, :date, :rounded_minutes, :actual_seconds, :timer_enabled))
+      render json: @time_log, status: :ok
+    else
+      render json: @time_log.errors, status: :unprocessable_entity
+    end
   end
 
   def delete
   end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_time_log
+      @time_log = TimeLog.find_by! id: params[:id], user_id: get_current_user.id
+    end
 end
