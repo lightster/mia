@@ -1,5 +1,5 @@
 class Api::V1::TimeLogsController < ApplicationController
-  before_action :set_time_log, only: [:update]
+  before_action :set_time_log, only: [:update, :destroy]
 
   def index
     @time_logs = TimeLog.all.user(get_current_user.id)
@@ -23,7 +23,9 @@ class Api::V1::TimeLogsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @time_log.destroy
+    head :no_content
   end
 
   private
