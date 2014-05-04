@@ -6,7 +6,16 @@ class Api::V1::TimeLogsController < ApplicationController
   end
 
   def create
-    @time_log = TimeLog.new(params.permit(:user_id, :category_id, :description, :date, :rounded_minutes, :actual_seconds, :timer_enabled))
+    time_log_params = params.permit(
+        :user_id,
+        :category_id,
+        :description,
+        :date,
+        :rounded_minutes,
+        :actual_seconds,
+        :timer_enabled
+    )
+    @time_log = TimeLog.new(time_log_params)
 
     if @time_log.save
       render json: @time_log, status: :created
@@ -16,7 +25,15 @@ class Api::V1::TimeLogsController < ApplicationController
   end
 
   def update
-    if @time_log.update(params.permit(:category_id, :description, :date, :rounded_minutes, :actual_seconds, :timer_enabled))
+    time_log_params = params.permit(
+        :category_id,
+        :description,
+        :date,
+        :rounded_minutes,
+        :actual_seconds,
+        :timer_enabled
+    )
+    if @time_log.update(time_log_params)
       render json: @time_log, status: :ok
     else
       render json: @time_log.errors, status: :unprocessable_entity
