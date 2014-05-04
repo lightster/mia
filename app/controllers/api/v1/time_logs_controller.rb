@@ -7,13 +7,15 @@ class Api::V1::TimeLogsController < ApplicationController
 
   def create
     time_log_params = params.permit(
-        :user_id,
         :category_id,
         :description,
         :date,
         :rounded_minutes,
         :actual_seconds,
         :timer_enabled
+    )
+    time_log_params.merge!(
+        :user_id => get_current_user.id
     )
     @time_log = TimeLog.new(time_log_params)
 
