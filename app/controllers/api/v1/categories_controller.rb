@@ -10,8 +10,10 @@ class Api::V1::CategoriesController < ApplicationController
   def create
     category_params = params.permit(
       :title,
-      :time_increment,
-      :user_id
+      :time_increment
+    )
+    category_params.merge!(
+        :user_id => get_current_user.id
     )
     @category = Category.new(category_params)
 
