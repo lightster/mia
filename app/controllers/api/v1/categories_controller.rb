@@ -8,7 +8,12 @@ class Api::V1::CategoriesController < ApplicationController
 
   # POST /api/v1/categories
   def create
-    @category = Category.new(params.permit(:title, :time_increment, :user_id))
+    category_params = params.permit(
+      :title,
+      :time_increment,
+      :user_id
+    )
+    @category = Category.new(category_params)
 
     if @category.save
       render json: @category, status: :created
@@ -19,7 +24,11 @@ class Api::V1::CategoriesController < ApplicationController
 
   # PUT /api/v1/categories/:id
   def update
-    if @category.update(params.permit(:title, :time_increment))
+    category_params = params.permit(
+      :title,
+      :time_increment
+    )
+    if @category.update(category_params)
       render json: @category, status: :ok
     else
       render json: @category.errors, status: :unprocessable_entity
