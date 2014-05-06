@@ -1,9 +1,6 @@
 json.array!(@time_logs) do |time_log|
   extracted_tags = time_log.tags.map do |tag|
-    {
-      :id => tag.id,
-      :title => tag.title
-    }
+    tag.title
   end
 
   json.id              time_log.id
