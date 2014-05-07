@@ -35,6 +35,11 @@ class Api::V1::TimeLogsController < ApplicationController
         :actual_seconds,
         :timer_enabled
     )
+    tags = params[:tags].collect do |tag_title|
+        Tag.where(title: tag_title).first_or_create
+    end
+    @time_log.tags = tags
+
     if @time_log.update(time_log_params)
       render json: @time_log, status: :ok
     else
