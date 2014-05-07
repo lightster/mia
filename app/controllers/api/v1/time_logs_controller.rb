@@ -7,15 +7,15 @@ class Api::V1::TimeLogsController < ApplicationController
 
   def create
     time_log_params = params.permit(
-        :category_id,
-        :description,
-        :date,
-        :rounded_minutes,
-        :actual_seconds,
-        :timer_enabled
+      :category_id,
+      :description,
+      :date,
+      :rounded_minutes,
+      :actual_seconds,
+      :timer_enabled
     )
     time_log_params.merge!(
-        :user_id => get_current_user.id
+      :user_id => get_current_user.id
     )
     @time_log = TimeLog.new(time_log_params)
 
@@ -28,15 +28,15 @@ class Api::V1::TimeLogsController < ApplicationController
 
   def update
     time_log_params = params.permit(
-        :category_id,
-        :description,
-        :date,
-        :rounded_minutes,
-        :actual_seconds,
-        :timer_enabled
+      :category_id,
+      :description,
+      :date,
+      :rounded_minutes,
+      :actual_seconds,
+      :timer_enabled
     )
     tags = params[:tags].collect do |tag_title|
-        Tag.where(title: tag_title).first_or_create
+      Tag.where(title: tag_title).first_or_create
     end
     time_log_params.merge!(
       :tags => tags
