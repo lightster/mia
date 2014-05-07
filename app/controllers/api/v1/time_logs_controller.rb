@@ -27,21 +27,6 @@ class Api::V1::TimeLogsController < ApplicationController
   end
 
   def update
-    time_log_params = params.permit(
-      :category_id,
-      :description,
-      :date,
-      :rounded_minutes,
-      :actual_seconds,
-      :timer_enabled
-    )
-    tags = params[:tags].collect do |tag_title|
-      Tag.where(title: tag_title).first_or_create
-    end
-    time_log_params.merge!(
-      :tags => tags
-    )
-
     if @time_log.update(time_log_params)
       render json: @time_log, status: :ok
     else
@@ -58,5 +43,23 @@ class Api::V1::TimeLogsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_time_log
       @time_log = TimeLog.find_by! id: params[:id], user_id: get_current_user.id
+    end
+
+    def time_log_params
+      new_params = params.permit(
+        :category_id,
+        :description,
+        :date,
+        :rounded_minutes,
+        :actual_seconds,
+        :timer_enabled
+      )
+      tags = params[:tags].collect do |tag_title|
+        Tag.where(title: tag_title).first_or_create
+      end
+      new_params.merge!(
+        :tags => tags
+      )
+      new_params
     end
 end
