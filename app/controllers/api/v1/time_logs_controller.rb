@@ -54,11 +54,10 @@ class Api::V1::TimeLogsController < ApplicationController
         :actual_seconds,
         :timer_enabled
       )
-      tags = params[:tags].collect do |tag_title|
-        Tag.where(title: tag_title).first_or_create
-      end
       new_params.merge!(
-        :tags => tags
+        :tags => params[:tags].collect do |tag_title|
+          Tag.where(title: tag_title).first_or_create
+        end
       )
       new_params
     end
