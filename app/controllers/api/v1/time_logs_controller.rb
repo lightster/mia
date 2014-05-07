@@ -6,18 +6,9 @@ class Api::V1::TimeLogsController < ApplicationController
   end
 
   def create
-    time_log_params = params.permit(
-      :category_id,
-      :description,
-      :date,
-      :rounded_minutes,
-      :actual_seconds,
-      :timer_enabled
-    )
-    time_log_params.merge!(
+    @time_log = TimeLog.new(time_log_params.merge!(
       :user_id => get_current_user.id
-    )
-    @time_log = TimeLog.new(time_log_params)
+    ))
 
     if @time_log.save
       render json: @time_log, status: :created
