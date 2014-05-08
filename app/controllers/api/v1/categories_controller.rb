@@ -8,14 +8,9 @@ class Api::V1::CategoriesController < ApplicationController
 
   # POST /api/v1/categories
   def create
-    category_params = params.permit(
-      :title,
-      :time_increment
-    )
-    category_params.merge!(
-        :user_id => get_current_user.id
-    )
-    @category = Category.new(category_params)
+    @category = Category.new(category_params.merge!(
+      :user_id => get_current_user.id
+    ))
 
     if @category.save
       render json: @category, status: :created
@@ -26,10 +21,6 @@ class Api::V1::CategoriesController < ApplicationController
 
   # PUT /api/v1/categories/:id
   def update
-    category_params = params.permit(
-      :title,
-      :time_increment
-    )
     if @category.update(category_params)
       render json: @category, status: :ok
     else
@@ -47,5 +38,12 @@ class Api::V1::CategoriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find_by! id: params[:id], user_id: get_current_user.id
+    end
+
+    def category_params
+      new_params = params.permit(
+        :title,
+        :time_increment
+      )
     end
 end
