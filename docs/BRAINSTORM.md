@@ -22,7 +22,7 @@ For self-improvement, meant for a single person, not a team.
   - Rails
   - SQLite
   - API First
-  - Bootstrap
+  - Foundation 5
 
 # Thoughts
 
