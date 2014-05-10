@@ -23,6 +23,7 @@ For self-improvement, meant for a single person, not a team.
   - SQLite
   - API First
   - Foundation 5
+  - Ember.js
 
 # Thoughts
 
