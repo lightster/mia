@@ -10,20 +10,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="">
-    <nav class="top-bar" data-topbar data-options="sticky_on: large">
-      <ul class="title-area">
-        <li class="name">
-        <h1><a href="#">Mia</a></h1>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+  <nav class="top-bar" data-topbar data-options="sticky_on: large">
+    <ul class="title-area">
+      <li class="name">
+        <a href="#">Mia</a>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    <div class="top-bar-section">
+      <ul>
+        <li><%= link_to 'Users', users_path %></a></li>
+        <li><%= link_to 'Categories', categories_path %></a></li>
+        <li><%= link_to 'Tags', tags_path %></a></li>
+        <li><%= link_to 'Time Logs', time_logs_path %></a></li>
       </ul>
-    </nav>
-  </div>
-  <div class="content-container">
-    <div class="content">
-      <%= yield %>
     </div>
+  </nav>
+  <div id="content">
+    <%= yield %>
   </div>
 </body>
 </html>

@@ -13,52 +13,5 @@
  *= require_self
  */
 
-@import 'foundation_and_overrides';
-
-.content-container {
-  @include grid-row();
-  .content {
-    @include grid-column(12);
-  }
-}
-
-.row.display {
-  background: #eee;
-  border: solid 1px #c6c6c6;
-  .columns {
-    border: solid 1px #aaa;
-    background: #e1e1e1;
-  }
-}
-
-.timer {
-  .overview {
-    text-align: center;
-    padding: 20px 10px;
-    .overview-status {
-    }
-    .overview-counter {
-      @extend h1
-    }
-    .overview-category {
-    }
-  }
-
-  .categories {
-    @include grid-column(12);
-    .category {
-      .category-actions {
-        padding: 5px 0;
-      }
-      .category-name {
-        padding: 5px 0;
-      }
-      .category-description {
-      }
-      .category-tags {
-      }
-    }
-    .category.enabled {
-    }
-  }
-}
+@import "foundation_and_overrides";
+@import "timer";
