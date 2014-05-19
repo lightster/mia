@@ -100,6 +100,12 @@ unique on (email)
     rails generate scaffold TimeLog user:belongs_to category:belongs_to description:string date:date rounded_minutes:integer actual_seconds:integer timer_enabled:boolean
     rails generate scaffold TimeLogTag time_log:belongs_to tag:belongs_to
 
+# Ember Bootstrapping
+  
+Using https://github.com/emberjs/ember-rails
+
+  rails generate ember:bootstrap
+
 # API
 
 Need to be able to
