@@ -2,4 +2,6 @@
 
 Mia.Router.map ()->
   @route 'about'
-
+  @resource 'categories', ->
+    @resource 'category',
+      path: '/:category_id'
