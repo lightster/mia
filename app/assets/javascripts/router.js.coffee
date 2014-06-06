@@ -5,3 +5,4 @@ Mia.Router.map ()->
   @resource 'categories', ->
     @resource 'category',
       path: '/:category_id'
+  @resource 'time_logs'
