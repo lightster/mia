@@ -14,4 +14,11 @@
  */
 
 @import "foundation_and_overrides";
+@import "clrs";
 @import "timer";
+
+.category-bar {
+  display: inline-block;
+  width: 5px;
+  height: 15px;
+}

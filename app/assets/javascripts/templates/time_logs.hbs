@@ -11,7 +11,9 @@
   {{#each}}
     <tr>
       <td>{{rounded_minutes}}</td>
-      <td><span class="label">{{category.title}}</span></td>
+      <td>
+        <div {{bind-attr class=":category-bar category.bgColor"}}></div>
+      <span >{{category.title}}</span></td>
       <td>{{description}}</td>
     </tr>
   {{/each}}
