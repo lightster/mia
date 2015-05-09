@@ -1,0 +1,9 @@
+{
+    "name": "theweekendprogrammer/mia",
+    "description": "Mia Time Tracking",
+    "require-dev": {
+        "php": ">=5.5.18",
+        "behat/behat": "~2.5",
+        "phpunit/phpunit": "~4.5"
+    }
+}
