@@ -15,6 +15,13 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(function (req, res, next) {
+  if (req.get('test-token') && req.get('test-time')) {
+    console.log('we need to check to see if a new test token is being started');
+  }
+  next();
+});
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
