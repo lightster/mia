@@ -16,10 +16,23 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(function (req, res, next) {
-  if (req.get('test-token') && req.get('test-time')) {
-    console.log('we need to check to see if a new test token is being started');
+  var testConfig = null
+  try {
+    testConfig = require('./config/test-fixture.js')
+  } catch (exception) {
   }
-  next();
+
+  if (req.get('test-token') && req.get('test-time')) {
+    if (testConfig) {
+      res.json('we need to check to see if a new test token is being started');
+      res.end();
+    } else {
+      res.json('the test config has not been setup!');
+      res.end();
+    }
+  } else {
+    next();
+  }
 });
 
 // uncomment after placing your favicon in /public
