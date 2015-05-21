@@ -22,7 +22,6 @@ router.post('/', function(req, res, next) {
   res.json({
     userId: 1,
     username: username,
-    password: password,
     email: email
   });
 });
