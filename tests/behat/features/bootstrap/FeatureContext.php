@@ -35,7 +35,7 @@ class FeatureContext extends BehatContext
      */
     public function iAmUnauthenticated()
     {
-        throw new PendingException();
+        // TODO: clear out any authentication that might have been set
     }
 
     /**
