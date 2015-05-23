@@ -30,15 +30,59 @@ class FeatureContext extends BehatContext
         // Initialize your context here
     }
 
-//
-// Place your definition and hook methods here:
-//
-//    /**
-//     * @Given /^I have done something with "([^"]*)"$/
-//     */
-//    public function iHaveDoneSomethingWith($argument)
-//    {
-//        doSomethingWith($argument);
-//    }
-//
+    /**
+     * @Given /^I am unauthenticated$/
+     */
+    public function iAmUnauthenticated()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^I generate a unique ID called "([^"]*)"$/
+     */
+    public function iGenerateAUniqueIdCalled($id_name)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When /^I use a[n]? (.*?) of "([^"]*)"$/
+     */
+    public function iUseAPropertyValueOf($property, $value)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^I post to (.*?)$/
+     */
+    public function iPostToRoute($route)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then /^I should receive a[n]? "([^"]*)" response$/
+     */
+    public function iShouldReceiveAResponse($response)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^the (.*?) property should be "([^"]*)"$/
+     */
+    public function thePropertyValueShouldBe($property, $value)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^the (.*?) property should not be returned$/
+     */
+    public function thePropertyShouldNotBeReturned()
+    {
+        throw new PendingException();
+    }
 }
