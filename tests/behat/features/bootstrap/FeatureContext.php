@@ -20,6 +20,12 @@ use Behat\Gherkin\Node\PyStringNode,
 class FeatureContext extends BehatContext
 {
     /**
+     * A hash of uniqid() values defined in the scenario
+     * @var array
+     */
+    private $unique_ids = [];
+
+    /**
      * Initializes context.
      * Every scenario gets its own context object.
      *
@@ -43,7 +49,13 @@ class FeatureContext extends BehatContext
      */
     public function iGenerateAUniqueIdCalled($id_name)
     {
-        throw new PendingException();
+        if (array_key_exists($id_name, $this->unique_ids)) {
+            throw new Exception(
+                "A unique ID named '{$id_name}' was already defined for this scenario."
+            );
+        }
+
+        $this->unique_ids[$id_name] = uniqid();
     }
 
     /**
