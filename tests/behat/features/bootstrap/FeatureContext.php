@@ -26,6 +26,12 @@ class FeatureContext extends BehatContext
     private $unique_ids = [];
 
     /**
+     * A hash of all properties to send in the request body.
+     * @var array
+     */
+    private $request_properties = [];
+
+    /**
      * Initializes context.
      * Every scenario gets its own context object.
      *
@@ -63,7 +69,11 @@ class FeatureContext extends BehatContext
      */
     public function iUseAPropertyValueOf($property, $value)
     {
-        throw new PendingException();
+        $this->request_properties[$property] = str_replace(
+            array_keys($this->unique_ids),
+            array_values($this->unique_ids),
+            $value
+        );
     }
 
     /**
