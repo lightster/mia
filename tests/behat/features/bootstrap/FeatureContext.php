@@ -55,13 +55,14 @@ class FeatureContext extends BehatContext
      */
     public function iGenerateAUniqueIdCalled($id_name)
     {
-        if (array_key_exists($id_name, $this->unique_ids)) {
+        $fq_id_name = '{{' . $id_name . '}}';
+        if (array_key_exists($fq_id_name, $this->unique_ids)) {
             throw new Exception(
                 "A unique ID named '{$id_name}' was already defined for this scenario."
             );
         }
 
-        $this->unique_ids[$id_name] = uniqid();
+        $this->unique_ids[$fq_id_name] = uniqid();
     }
 
     /**
