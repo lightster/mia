@@ -32,6 +32,11 @@ class FeatureContext extends BehatContext
     private $request_properties = [];
 
     /**
+     * @var string
+     */
+    private $base_url;
+
+    /**
      * Initializes context.
      * Every scenario gets its own context object.
      *
@@ -39,7 +44,11 @@ class FeatureContext extends BehatContext
      */
     public function __construct(array $parameters)
     {
-        // Initialize your context here
+        if (!array_key_exists('base_url', $parameters)) {
+            throw new Exception("Required config option 'base_url' was not provided.");
+        }
+
+        $this->base_url = $parameters['base_url'];
     }
 
     /**
