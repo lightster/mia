@@ -2,3 +2,5 @@ default:
     paths:
         features: tests/behat/features
         bootstrap: %behat.paths.features%/bootstrap
+imports:
+    - behat.local.yml
