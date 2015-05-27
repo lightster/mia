@@ -6,6 +6,7 @@ use Behat\Behat\Context\BehatContext;
 use Behat\Behat\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
+use GuzzleHttp\Client as HttpClient;
 
 //
 // Require 3rd-party libraries here:
@@ -35,6 +36,26 @@ class FeatureContext extends BehatContext
      * @var string
      */
     private $base_url;
+
+    /**
+     * @var GuzzleHttp\Message\ResponseInterface
+     */
+    private $http_response;
+
+    /**
+     * @var int
+     */
+    private $http_response_code;
+
+    /**
+     * @var string
+     */
+    private $http_response_phrase;
+
+    /**
+     * @var array
+     */
+    private $http_response_properties;
 
     /**
      * Initializes context.
@@ -91,7 +112,16 @@ class FeatureContext extends BehatContext
      */
     public function iPostToRoute($route)
     {
-        throw new PendingException();
+        $client = new HttpClient();
+        $this->http_response = $client->post(
+            $this->base_url . $route,
+            [
+                'json' => $this->request_properties,
+            ]
+        );
+        $this->http_response_code = $this->http_response->getStatusCode();
+        $this->http_response_phrase = $this->http_response->getReasonPhrase();
+        $this->http_response_properties = $this->http_response->json();
     }
 
     /**
