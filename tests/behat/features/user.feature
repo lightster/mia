@@ -8,7 +8,7 @@ Feature: user
      When I use a username of "createuser-{{SID}}"
       And I use a password of "password-{{SID}}"
       And I use an email of "createuser+{{SID}}@example.com"
-      And I post to /user
+      And I post to /users
      Then I should receive an "OK" response
       And the username property should be "createuser-{{SID}}"
       And the password property should not be returned
