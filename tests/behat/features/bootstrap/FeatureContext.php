@@ -122,7 +122,10 @@ class FeatureContext extends BehatContext
      */
     public function iShouldReceiveAResponse($response)
     {
-        throw new PendingException();
+        assertEquals(
+            $response,
+            $this->http_response_phrase
+        );
     }
 
     /**
